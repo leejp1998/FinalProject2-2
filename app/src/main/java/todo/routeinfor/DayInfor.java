@@ -11,9 +11,11 @@ import java.util.List;
 public class DayInfor implements Serializable {
 
     HashMap<String,Infor> infors = new HashMap<String ,Infor>();
+    boolean option = false;
 
     public void addInfor(String key,Infor infor){
         infors.put(key,infor);
+        option = infor.getOption();
     }
     public HashMap<String,Infor> getDayInfors(){
         return infors;
@@ -34,6 +36,10 @@ public class DayInfor implements Serializable {
             list.add(value);
         }
         return list;
+    }
+
+    public boolean getOption(){
+        return option;
     }
 
     public void remove(String key){

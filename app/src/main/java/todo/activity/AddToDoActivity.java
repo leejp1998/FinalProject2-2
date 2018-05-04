@@ -38,7 +38,7 @@ public class AddToDoActivity extends AppCompatActivity
     private static String hourkey  = "hour";
     private static String minuteKey = "minute";
     private static String dataKey  = "data";
-    String str;
+    private static String optionKey = "option";
 
 
     @Override
@@ -103,8 +103,12 @@ public class AddToDoActivity extends AppCompatActivity
         bundle.putInt(hourkey,hour);
         bundle.putInt(minuteKey,minute);
         bundle.putString(dataKey,data);
+        if(testButton.isSelected()){
+            bundle.putBoolean(optionKey, true);
+        } else{
+            bundle.putBoolean(optionKey, false);
+        }
         intent.putExtras(bundle);
-        intent.putExtra("radioChosen", str);
         this.setResult(0,intent);
         this.finish();
     }

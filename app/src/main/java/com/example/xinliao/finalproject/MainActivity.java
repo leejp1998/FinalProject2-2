@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private static String hourkey  = "hour";
     private static String minuteKey = "minute";
     private static String dataKey  = "data";
+    private static String optionKey = "option";
 
 
     private ScheduleView scheduleView;
@@ -61,9 +62,10 @@ public class MainActivity extends AppCompatActivity {
             int hour = bundle.getInt(hourkey);
             int minute = bundle.getInt(minuteKey);
             String mydata = bundle.getString(dataKey);
+            boolean option = bundle.getBoolean(optionKey);
             System.out.println("--->my"+year+" "+month+" "+day+" "+hour+" "+minute+" "+mydata);
             try {
-                saveRouteData(year,month,day,hour,minute,mydata);
+                saveRouteData(year,month,day,hour,minute,mydata,option);
                 scheduleView.mySelect(year,month,day);
                 System.out.println("--->++"+requestCode+" "+resultCode);
             } catch (Exception e) {
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
     //保存文件
     private void saveRouteData(int year,int month,int day
-            ,int hour,int minute,String data) throws Exception {
+            ,int hour,int minute,String data, boolean option) throws Exception {
 
         String inforKey = FileTool.getInforKey(hour,minute);
         String dayinforKey = FileTool.getDayInforKey(year,month,day);
@@ -92,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         }
         infor.setYear(year); infor.setMonth(month); infor.setDay(day);
         infor.setHour(hour);infor.setMinute(minute);
-        infor.setData(data);
+        infor.setData(data); infor.setOption(option);
 
         System.out.println("--->info.setData(data);"+infor.getData());
 

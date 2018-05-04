@@ -54,12 +54,20 @@ public class RouteAdapter extends BaseAdapter {
 
         String time = getTime(infor);
         String data = getData(infor);
+//        boolean option = getOption(infor);
         holderView.timeTextView.setText(time);
         holderView.routeTextView.setText(data);
 
         return view;
     }
 
+//    private boolean getOption(Infor infor){
+//        boolean option = false;
+//        if(infor != null){
+//            option = infor.getOption();
+//        }
+//        return option;
+//    }
     private String getTime(Infor infor){
 
         String time = "";

@@ -88,6 +88,11 @@ public class FileTool  {
         return  false;
     }
 
+//    public static boolean isTestRoute(Context context, int year, int month, int day){
+//        DayInfor dayInfor = getDayInfor(context, year, month, day);
+//        if(dayInfor.getInfor())
+//    }
+
     public static void removeInfor(Context context,int year
             ,int month,int day,int hour,int minute){
         String dayInforKey = getDayInforKey(year,month,day);
