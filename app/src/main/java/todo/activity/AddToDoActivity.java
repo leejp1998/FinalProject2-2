@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TimePicker;
 
 import com.example.xinliao.finalproject.R;
@@ -21,6 +22,9 @@ public class AddToDoActivity extends AppCompatActivity
     private EditText editText;
     private Button noButton;
     private Button yesButton;
+    private RadioButton testButton;
+    private RadioButton assignmentButton;
+    private RadioButton othersButton;
     private boolean yesChecked;
     private boolean noChecked;
 
@@ -34,6 +38,7 @@ public class AddToDoActivity extends AppCompatActivity
     private static String hourkey  = "hour";
     private static String minuteKey = "minute";
     private static String dataKey  = "data";
+    String str;
 
 
     @Override
@@ -49,6 +54,9 @@ public class AddToDoActivity extends AppCompatActivity
         editText = (EditText)findViewById(R.id.route_data_text);
         noButton = (Button)findViewById(R.id.no_button);
         yesButton = (Button)findViewById(R.id.yes_button);
+        testButton = (RadioButton)findViewById(R.id.option_test);
+        assignmentButton = (RadioButton)findViewById(R.id.option_assignment);
+        othersButton = (RadioButton)findViewById(R.id.option_others);
         timePicker.setIs24HourView(true);
         noButton.setOnClickListener(this);
         yesButton.setOnClickListener(this);
@@ -86,6 +94,7 @@ public class AddToDoActivity extends AppCompatActivity
         int currentDay = day;
         String data = editText.getText().toString();
 
+
         Intent intent =new Intent();
         Bundle bundle = new Bundle();
         bundle.putInt(yearKey,currentYear);
@@ -95,6 +104,7 @@ public class AddToDoActivity extends AppCompatActivity
         bundle.putInt(minuteKey,minute);
         bundle.putString(dataKey,data);
         intent.putExtras(bundle);
+        intent.putExtra("radioChosen", str);
         this.setResult(0,intent);
         this.finish();
     }
