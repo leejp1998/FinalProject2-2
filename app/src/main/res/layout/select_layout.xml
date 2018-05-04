@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_vertical">
-    <ImageView android:id="@+id/add_image"
+    <ImageView android:id="@+id/reduce_image"
         android:layout_width="20dp"
         android:layout_height="40dp"
         android:background="@mipmap/ic_left"
@@ -42,7 +42,7 @@
         android:textSize="24sp"
         android:layout_weight="1"
         android:text="day"/>
-    <ImageView android:id="@+id/reduce_image"
+    <ImageView android:id="@+id/add_image"
         android:layout_width="20dp"
         android:layout_height="40dp"
         android:background="@mipmap/ic_left"
