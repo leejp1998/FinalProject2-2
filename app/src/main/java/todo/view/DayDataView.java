@@ -33,8 +33,9 @@ public class DayDataView extends LinearLayout {
     private static int NOT_TODAY_TEXT_COLOR = Color.parseColor("#1a1919");  //非今天的Text颜色    //黑
 
     private static int TODAY_COLOR = Color.parseColor("#56e929");           //选中的背景色
-    private static int NOT_TODAY_COLOR = Color.parseColor("#00FFFFFF");        //非选中背景色
+    private static int NOT_TODAY_COLOR = Color.parseColor("#00FFFFFF");//非选中背景色
 
+    private static int EVENT_COLOR = Color.parseColor("#0000FF");
     Drawable drawable = getResources().getDrawable(R.drawable.prompt_shape);
     public DayDataView(Context context) {
         super(context);
@@ -66,6 +67,7 @@ public class DayDataView extends LinearLayout {
         HASROUTE = hasRoute;
         if(HASROUTE){
             imageView.setVisibility(View.VISIBLE);
+            textView.setTextColor(EVENT_COLOR);
             //imageView.setBackgroundResource(R.drawable.prompt_shape);
         }else {
             imageView.setVisibility(View.GONE);//掩藏起来
