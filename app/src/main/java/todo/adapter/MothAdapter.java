@@ -121,6 +121,8 @@ public class MothAdapter extends BaseAdapter {
                 holderView.dayDataView.setHasRoute(true);
                 if(FileTool.getDayInfor(context, currentYear, currentmonth, day).getOption()){
                     holderView.dayDataView.setTestRoute(true);
+                } else if (FileTool.getDayInfor(context, currentYear, currentmonth, day).getAssignmentOption()){
+                    holderView.dayDataView.setAssignmentRoute(true);
                 }
             }else {
                 holderView.dayDataView.setHasRoute(false);

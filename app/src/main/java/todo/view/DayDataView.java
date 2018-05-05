@@ -36,7 +36,8 @@ public class DayDataView extends LinearLayout {
     private static int TODAY_COLOR = Color.parseColor("#56e929");           //选中的背景色
     private static int NOT_TODAY_COLOR = Color.parseColor("#00FFFFFF");//非选中背景色
 
-    private static int EVENT_COLOR = Color.parseColor("#0000FF");
+    private static int EVENT_TEST_COLOR = Color.parseColor("#0000FF");
+    private static int EVENT_ASSIGNMENT_COLOR = Color.parseColor("#008000");
     Drawable drawable = getResources().getDrawable(R.drawable.prompt_shape);
     public DayDataView(Context context) {
         super(context);
@@ -71,13 +72,28 @@ public class DayDataView extends LinearLayout {
             //imageView.setBackgroundResource(R.drawable.prompt_shape);
         }else {
             imageView.setVisibility(View.GONE);//掩藏起来
+            textView.setTextColor(NOT_TODAY_TEXT_COLOR);
         }
     }
 
     public void setTestRoute(boolean testRoute){
         TESTROUTE = testRoute;
         if(TESTROUTE){
-            textView.setTextColor(EVENT_COLOR);
+            textView.setTextColor(EVENT_TEST_COLOR);
+        }
+    }
+
+    public void setAssignmentRoute (boolean assignmentRoute){
+        TESTROUTE = assignmentRoute;
+        if(TESTROUTE){
+            textView.setTextColor(EVENT_ASSIGNMENT_COLOR);
+        }
+    }
+
+    public void setScheduleDeleted(boolean hasRoute){
+        HASROUTE = hasRoute;
+        if(!HASROUTE){
+            textView.setTextColor(NOT_TODAY_COLOR);
         }
     }
 

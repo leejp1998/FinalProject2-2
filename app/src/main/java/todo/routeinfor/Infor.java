@@ -8,7 +8,7 @@ public class Infor implements Serializable {
 
     int year= -1 ;int month=-1; int day=-1;
     int hour= -1; int minute=-1;
-    String data = ""; boolean option = false;
+    String data = ""; boolean option = false; boolean assignmentOption = false;
 
     public int getYear() {
         return year;
@@ -60,7 +60,11 @@ public class Infor implements Serializable {
 
     public boolean getOption(){return option;}
 
-    public void setOption(boolean option){this.option = true;}
+    public void setOption(boolean option){this.option = option;}
+
+    public void setAssignmentOption(boolean option){this.assignmentOption = option;}
+
+    public boolean getAssignmentOption(){return assignmentOption;}
 
     @Override
     public String toString() {

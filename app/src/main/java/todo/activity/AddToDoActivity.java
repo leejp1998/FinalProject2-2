@@ -39,6 +39,7 @@ public class AddToDoActivity extends AppCompatActivity
     private static String minuteKey = "minute";
     private static String dataKey  = "data";
     private static String optionKey = "option";
+    private static String assignmentKey = "assignment_option";
 
 
     @Override
@@ -103,10 +104,15 @@ public class AddToDoActivity extends AppCompatActivity
         bundle.putInt(hourkey,hour);
         bundle.putInt(minuteKey,minute);
         bundle.putString(dataKey,data);
-        if(testButton.isSelected()){
+        if(testButton.isChecked()){
             bundle.putBoolean(optionKey, true);
         } else{
             bundle.putBoolean(optionKey, false);
+        }
+        if(assignmentButton.isChecked()){
+            bundle.putBoolean(assignmentKey, true);
+        } else{
+            bundle.putBoolean(assignmentKey, false);
         }
         intent.putExtras(bundle);
         this.setResult(0,intent);

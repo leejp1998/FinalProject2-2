@@ -12,10 +12,12 @@ public class DayInfor implements Serializable {
 
     HashMap<String,Infor> infors = new HashMap<String ,Infor>();
     boolean option = false;
+    boolean assignment_option = false;
 
     public void addInfor(String key,Infor infor){
         infors.put(key,infor);
         option = infor.getOption();
+        assignment_option = infor.getAssignmentOption();
     }
     public HashMap<String,Infor> getDayInfors(){
         return infors;
@@ -40,6 +42,10 @@ public class DayInfor implements Serializable {
 
     public boolean getOption(){
         return option;
+    }
+
+    public boolean getAssignmentOption(){
+        return assignment_option;
     }
 
     public void remove(String key){
