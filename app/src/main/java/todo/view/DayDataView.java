@@ -27,6 +27,7 @@ public class DayDataView extends LinearLayout {
     public boolean HASROUTE = false;//是否有行程
     public boolean isToday = false;
     public boolean TESTROUTE = false;
+    public boolean ASSIGNMENTROUTE = false;
 
     private static int PROMAT_NOW_COLOR = Color.parseColor("#f70338");      //有事红点色        //红
 
@@ -82,10 +83,13 @@ public class DayDataView extends LinearLayout {
             textView.setTextColor(EVENT_TEST_COLOR);
         }
     }
+    public boolean getTestRoute(){
+        return TESTROUTE;
+    }
 
     public void setAssignmentRoute (boolean assignmentRoute){
-        TESTROUTE = assignmentRoute;
-        if(TESTROUTE){
+        ASSIGNMENTROUTE = assignmentRoute;
+        if(ASSIGNMENTROUTE){
             textView.setTextColor(EVENT_ASSIGNMENT_COLOR);
         }
     }
