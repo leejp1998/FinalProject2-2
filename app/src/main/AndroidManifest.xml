@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="todo.activity.SeeAllScheduleActivity"></activity>
         <activity android:launchMode="singleTop"
             android:name="todo.activity.AddToDoActivity"/>
     </application>
