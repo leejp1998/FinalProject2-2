@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+import android.widget.Toolbar;
+
 import todo.tool.FileTool;
 import todo.activity.AddToDoActivity;
 import todo.routeinfor.AllInfor;
@@ -32,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         scheduleView = (ScheduleView)findViewById(R.id.schedule_view);
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         scheduleView.setAddRouteListener(new ScheduleView.AddRouteListener() {
             @Override
             public void addRoute(View view){
