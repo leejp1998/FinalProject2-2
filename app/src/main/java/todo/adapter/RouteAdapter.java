@@ -85,8 +85,14 @@ public class RouteAdapter extends BaseAdapter {
             if(infor .getHour()>=0){
                 time += infor.getHour()+":";
             }
-            if(infor.getMinute() >0){
-                time += infor.getMinute();
+            if(infor.getMinute() >= 0){
+                if(infor.getMinute() == 0){
+                    time += "00";
+                } else if (infor.getMinute() < 10){
+                    time += "0" + infor.getMinute();
+                } else {
+                    time += infor.getMinute();
+                }
             }
         }
         return time;

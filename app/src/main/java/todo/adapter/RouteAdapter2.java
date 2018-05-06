@@ -72,28 +72,34 @@ public class RouteAdapter2 extends BaseAdapter {
 //        }
 //        return option;
 //    }
-    private String getTime(Infor infor){
+private String getTime(Infor infor){
 
-        String time = "";
-        if(infor != null){
-            if(infor.getYear() >=0 ){
-                time += infor.getYear()+"/";
-            }
-            if(infor.getMonth() >=0){
-                time += infor.getMonth()+"/";
-            }
-            if(infor.getDay() >= 0){
-                time += infor.getDay()+" ";
-            }
-            if(infor .getHour()>=0){
-                time += infor.getHour()+":";
-            }
-            if(infor.getMinute() >0){
+    String time = "";
+    if(infor != null){
+        if(infor.getYear() >=0 ){
+            time += infor.getYear()+"/";
+        }
+        if(infor.getMonth() >=0){
+            time += infor.getMonth()+"/";
+        }
+        if(infor.getDay() >= 0){
+            time += infor.getDay()+" ";
+        }
+        if(infor .getHour()>=0){
+            time += infor.getHour()+":";
+        }
+        if(infor.getMinute() >= 0){
+            if(infor.getMinute() == 0){
+                time += "00";
+            } else if (infor.getMinute() < 10){
+                time += "0" + infor.getMinute();
+            } else {
                 time += infor.getMinute();
             }
         }
-        return time;
     }
+    return time;
+}
 
     private int getCountDown(Infor infor){
 
