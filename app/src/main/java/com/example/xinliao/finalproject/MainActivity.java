@@ -9,12 +9,16 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import java.sql.Date;
+import java.sql.Time;
+
 import todo.activity.SeeAllScheduleActivity;
 import todo.tool.FileTool;
 import todo.activity.AddToDoActivity;
 import todo.routeinfor.AllInfor;
 import todo.routeinfor.DayInfor;
 import todo.routeinfor.Infor;
+import todo.tool.TimeTool;
 import todo.view.ScheduleView;
 
 
@@ -46,9 +50,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SeeAllScheduleActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putInt(yearKey, scheduleView.getCurrentYear());
-                bundle.putInt(monthKey,scheduleView.getCurrentMonth());
-                bundle.putInt(daykey,scheduleView.getSelectDay());
+                TimeTool timeTool = new TimeTool();
+                Date date = new Date(System.currentTimeMillis());
+                bundle.putInt(yearKey, timeTool.getYear(date));
+                bundle.putInt(monthKey,timeTool.getMonth(date));
+                bundle.putInt(daykey,timeTool.getDay(date));
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
