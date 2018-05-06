@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import todo.activity.SeeAllScheduleActivity;
 import todo.tool.FileTool;
 import todo.activity.AddToDoActivity;
 import todo.routeinfor.AllInfor;
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private static String optionKey = "option";
     private static String assignmentKey = "assignment_option";
 
+    private ImageButton seeAllScheduleButton;
+
 
     private ScheduleView scheduleView;
     @Override
@@ -36,6 +40,19 @@ public class MainActivity extends AppCompatActivity {
         scheduleView = (ScheduleView)findViewById(R.id.schedule_view);
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        seeAllScheduleButton = (ImageButton) findViewById(R.id.seeAllScheduleButton);
+        seeAllScheduleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SeeAllScheduleActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt(yearKey, scheduleView.getCurrentYear());
+                bundle.putInt(monthKey,scheduleView.getCurrentMonth());
+                bundle.putInt(daykey,scheduleView.getSelectDay());
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
         scheduleView.setAddRouteListener(new ScheduleView.AddRouteListener() {
             @Override
             public void addRoute(View view){

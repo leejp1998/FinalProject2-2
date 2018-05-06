@@ -23,6 +23,14 @@ public class DayInfor implements Serializable {
         return infors;
     }
 
+    public ArrayList<Infor> getDayInforToInfor(){
+        ArrayList<Infor> list = new ArrayList<Infor> ();
+        for(String key:infors.keySet()){
+            list.add(infors.get(key));
+        }
+        return list;
+    }
+
     public Infor getInfor(String key){
         return infors.get(key);
     }

@@ -1,7 +1,9 @@
 package todo.routeinfor;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Xin Liao on 4/29/2018.
@@ -16,5 +18,15 @@ public class AllInfor implements Serializable {
 
     public DayInfor getDayRouteList(String time){
         return map.get(time);
+    }
+
+    public ArrayList<DayInfor> getAllDayRouteList (String currentTime){
+        ArrayList<DayInfor> allDayRouteList = new ArrayList<DayInfor>();
+        for(String key:map.keySet()){
+            if (Integer.parseInt(key)>=Integer.parseInt(currentTime)){
+                allDayRouteList.add(map.get(key));
+            }
+        }
+        return allDayRouteList;
     }
 }

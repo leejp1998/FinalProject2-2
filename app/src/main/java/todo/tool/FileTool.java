@@ -79,6 +79,23 @@ public class FileTool  {
         return list;
     }
 
+    public static ArrayList<Infor> getAllInfor(Context context, int year, int month, int day){
+        ArrayList<DayInfor> dayInfor = new ArrayList<DayInfor> ();
+        ArrayList<Infor> list = new ArrayList<Infor>();
+        String key = getDayInforKey(year,month,day);
+        AllInfor infors = getAllInfor(context);
+        if(infors!=null){
+            dayInfor = infors.getAllDayRouteList(key);
+        }
+        for (int i=0; i<dayInfor.size(); i++){
+            for (int j=0; j< dayInfor.get(i).getDayInforToInfor().size(); j++){
+                list.add(dayInfor.get(i).getDayInforToInfor().get(j));
+            }
+        }
+        return list;
+
+    }
+
     //判断当前是否有行程
     public static boolean isHasRoute(Context context,int year,int month,int day){
         DayInfor dayInfor   = getDayInfor(context,year,month,day);
