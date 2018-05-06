@@ -96,6 +96,23 @@ public class FileTool  {
 
     }
 
+    public static ArrayList<Infor> sortByDate(ArrayList<Infor> arrayList){
+        ArrayList <Infor> result = new ArrayList<Infor>();
+        final int SIZE = arrayList.size();
+
+        if(SIZE != 0){
+            for(int i=0; i < result.size(); i++){
+                for(int j=0; j < SIZE; j++){
+                    if(arrayList.get(i).getKey() >= arrayList.get(j).getKey()){
+                        result.add(j, arrayList.get(i));
+                    }
+                }
+            }
+        }
+
+        return result;
+    }
+
     //判断当前是否有行程
     public static boolean isHasRoute(Context context,int year,int month,int day){
         DayInfor dayInfor   = getDayInfor(context,year,month,day);

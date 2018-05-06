@@ -51,6 +51,7 @@ public class SeeAllScheduleActivity extends AppCompatActivity{
         AllInfor infors = FileTool.getAllInfor(getApplicationContext());
         //infors.addDayRouteList(dayinforKey, dayInfor);
         schedule_list = FileTool.getAllInfor(this, year, month, day);
+        //schedule_list = FileTool.sortByDate(schedule_list);
         RouteAdapter adapter = new RouteAdapter(this, schedule_list);
         listView = (ListView) findViewById(R.id.all_schedule_list_view);
         scheduleView = (ScheduleView)findViewById(R.id.schedule_view);

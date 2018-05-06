@@ -66,6 +66,20 @@ public class Infor implements Serializable {
 
     public boolean getAssignmentOption(){return assignmentOption;}
 
+    public int getKey(){
+        int result;
+
+        int minute1, hour1, day1, month1, year1;
+        minute1 = minute;
+        hour1 = hour * 60;
+        day1 = day * 24 * 60;
+        month1 = month * 31 * 24 * 60;
+        year1 = (year - 2017) * 12 * 31 * 24 * 60;
+        result = minute1 + hour1 + day1 + month1 + year1;
+
+        return result;
+    }
+
     @Override
     public String toString() {
         return "Infor{" +
