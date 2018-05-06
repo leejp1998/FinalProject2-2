@@ -57,6 +57,7 @@ public class RouteAdapter extends BaseAdapter {
 //        boolean option = getOption(infor);
         holderView.timeTextView.setText(time);
         holderView.routeTextView.setText(data);
+        holderView.textPromptView.setText("Swipe to delete");
 
         return view;
     }
@@ -101,9 +102,11 @@ public class RouteAdapter extends BaseAdapter {
     class HolderView{
         TextView timeTextView;
         TextView routeTextView;
+        TextView textPromptView;
         public HolderView(View view){
             timeTextView = (TextView) view.findViewById(R.id.time_text);
             routeTextView =(TextView)view.findViewById(R.id.data_text);
+            textPromptView = (TextView)view.findViewById(R.id.text_prompt);
         }
     }
 

@@ -6,4 +6,10 @@
         android:id="@+id/all_schedule_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <todo.view.RouteShowDeleteView
+        android:id="@+id/route_show_delect1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/month_data_view"/>
 </RelativeLayout>

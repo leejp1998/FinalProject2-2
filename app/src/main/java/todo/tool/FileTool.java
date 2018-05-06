@@ -6,7 +6,9 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import todo.routeinfor.AllInfor;
@@ -100,16 +102,29 @@ public class FileTool  {
         ArrayList <Infor> result = new ArrayList<Infor>();
         final int SIZE = arrayList.size();
 
-        if(SIZE != 0){
-            for(int i=0; i < result.size(); i++){
-                for(int j=0; j < SIZE; j++){
-                    if(arrayList.get(i).getKey() >= arrayList.get(j).getKey()){
-                        result.add(j, arrayList.get(i));
-                    }
-                }
-            }
+        Infor [] mylist = new Infor [SIZE];
+        for(int i=0; i<SIZE; i++){
+            mylist[i] = arrayList.get(i);
         }
 
+        if(SIZE != 0){
+            for(int i=0; i < mylist.length -1; i++){
+                int index = i;
+                for(int j=i+1; j < mylist.length; j++){
+                    if(mylist[j].getKey() < mylist[index].getKey()){
+                        index = j;
+                    }
+                }
+                Infor holder = mylist[index];
+                mylist[index] = mylist[i];
+                mylist[i] = holder;
+            }
+        }
+        if(SIZE!=0) {
+            for (int i = 0; i < SIZE; i++) {
+                result.add(mylist[i]);
+            }
+        }
         return result;
     }
 

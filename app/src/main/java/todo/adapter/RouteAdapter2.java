@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import com.example.xinliao.finalproject.R;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import todo.routeinfor.Infor;
@@ -53,11 +55,12 @@ public class RouteAdapter2 extends BaseAdapter {
 
         String time = getTime(infor);
         String data = getData(infor);
+        int countdown = getCountDown(infor);
 //        boolean option = getOption(infor);
         holderView.timeTextView.setText(time);
         holderView.routeTextView.setText(data);
         //Modify this to be the countdown
-        holderView.textPromptView.setText("");
+        holderView.textPromptView.setText("D-" + countdown);
 
         return view;
     }
@@ -90,6 +93,27 @@ public class RouteAdapter2 extends BaseAdapter {
             }
         }
         return time;
+    }
+
+    private int getCountDown(Infor infor){
+
+        int year=0, month=0, day=0;
+        int countdown = 0;
+        if(infor != null){
+            year = infor.getYear();
+            month = infor.getMonth();
+            day = infor.getDay();
+        }
+
+        Date scheduleDate = new Date (year, month, day);
+        Date currentDate = new Date(System.currentTimeMillis());
+        if(!currentDate.after(scheduleDate)){
+            long diff = scheduleDate.getTime() - currentDate.getTime();
+            long days = diff / (24*60*60*1000);
+            countdown = (int) days -693990;
+        }
+
+        return countdown;
     }
 
     private String getData(Infor infor){
