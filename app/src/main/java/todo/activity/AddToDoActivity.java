@@ -103,7 +103,11 @@ public class AddToDoActivity extends AppCompatActivity
         bundle.putInt(daykey,currentDay);
         bundle.putInt(hourkey,hour);
         bundle.putInt(minuteKey,minute);
-        bundle.putString(dataKey,data);
+        if(data.equals("")){
+            bundle.putString(dataKey, "Empty Schedule");
+        } else {
+            bundle.putString(dataKey, data);
+        }
         if(testButton.isChecked()){
             bundle.putBoolean(optionKey, true);
         } else{
