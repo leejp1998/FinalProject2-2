@@ -27,7 +27,7 @@ public class MyNewIntentService extends IntentService {
         // show notification
         Notification.Builder builder = new Notification.Builder(this);
         builder.setContentTitle("Don't Miss Due");
-        builder.setContentText("Your to-do list today is here");
+        builder.setContentText("Check your schedule today");
         builder.setSmallIcon(R.drawable.prompt_shape);
 
         Intent notifyIntent = new Intent(this, MainActivity.class);

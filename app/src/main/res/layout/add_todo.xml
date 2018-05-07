@@ -34,7 +34,7 @@
                 android:layout_below="@+id/radiobuttongroup"
                 android:layout_centerHorizontal="true"
                 android:minHeight="100dp"
-                android:text="Description" />
+                android:hint="Description" />
 
             <TextView
                 android:id="@+id/route_data_text1"

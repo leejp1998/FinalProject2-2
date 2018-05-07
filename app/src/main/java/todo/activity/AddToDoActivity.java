@@ -70,7 +70,7 @@ public class AddToDoActivity extends AppCompatActivity
         month = bundle.getInt(monthKey);
         day   = bundle.getInt(daykey);
 
-        editText.setText(year+"/"+month+"/"+day);
+        editText.setHint("Schedule on " + month +"/"+day);
 
         setResult(10,null);
     }
