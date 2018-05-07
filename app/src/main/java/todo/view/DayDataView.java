@@ -21,7 +21,9 @@ public class DayDataView extends LinearLayout {
 
     private LayoutInflater inflater;
     private View view;
+    private View view2;
     private TextView textView;
+    private TextView dataTextView;
     private ImageView imageView;
 
     public boolean HASROUTE = false;//是否有行程
@@ -58,6 +60,8 @@ public class DayDataView extends LinearLayout {
     private void init(final Context context){
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.day_layout,this);
+        view2 = inflater.inflate(R.layout.route_show_item_layout, this);
+        dataTextView = (TextView)view2.findViewById(R.id.data_text);
         textView = (TextView)view.findViewById(R.id.text);
         imageView = (ImageView)view.findViewById(R.id.image);
         setHasRoute(false);
@@ -81,6 +85,7 @@ public class DayDataView extends LinearLayout {
         TESTROUTE = testRoute;
         if(TESTROUTE){
             textView.setTextColor(EVENT_TEST_COLOR);
+            dataTextView.setTextColor(EVENT_TEST_COLOR);
         }
     }
     public boolean getTestRoute(){
@@ -91,6 +96,7 @@ public class DayDataView extends LinearLayout {
         ASSIGNMENTROUTE = assignmentRoute;
         if(ASSIGNMENTROUTE){
             textView.setTextColor(EVENT_ASSIGNMENT_COLOR);
+            dataTextView.setTextColor(EVENT_ASSIGNMENT_COLOR);
         }
     }
 

@@ -58,6 +58,8 @@ public class Infor implements Serializable {
         this.data += data;
     }
 
+    public void setDataNew(String data){this.data = data;}
+
     public boolean getOption(){return option;}
 
     public void setOption(boolean option){this.option = option;}

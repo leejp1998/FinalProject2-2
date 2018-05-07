@@ -156,7 +156,13 @@ public class MainActivity extends AppCompatActivity {
         }
         infor.setYear(year); infor.setMonth(month); infor.setDay(day);
         infor.setHour(hour);infor.setMinute(minute);
-        infor.setData(data); infor.setOption(option); infor.setAssignmentOption(assignment_option);
+        infor.setOption(option); infor.setAssignmentOption(assignment_option);
+
+        if(!infor.getData().equals("")){
+            infor.setData(", " + data);
+        } else {
+            infor.setData(data);
+        }
 
         System.out.println("--->info.setData(data);"+infor.getData());
 
