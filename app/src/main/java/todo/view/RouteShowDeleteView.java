@@ -54,9 +54,11 @@ public class RouteShowDeleteView extends ListView implements View.OnTouchListene
                 return false;
             }
 
+            //Fling to the left = delete
+            //Fling to the right = edit
             @Override
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-                if(!isShowButton &&Math.abs(velocityX)>Math.abs(velocityY)
+                if(!isShowButton && velocityX < Math.abs(velocityY)
                         && Math.abs(velocityX) >getWidth()/3 ){
                     buttonView = LayoutInflater.from(context).inflate(R.layout.button_layout,null);
                     buttonView.setOnClickListener(new OnClickListener() {
@@ -70,7 +72,27 @@ public class RouteShowDeleteView extends ListView implements View.OnTouchListene
                             }
                         }
                     });
-                    //getChileAt获得的是屏幕上显示的Item序号
+                    selectItemGroup = (ViewGroup) getChildAt(selectItem-getFirstVisiblePosition());
+                    RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+                    params.addRule(RelativeLayout.CENTER_VERTICAL);
+                    selectItemGroup.addView(buttonView,params);
+                    isShowButton = true;
+                } else if (!isShowButton && velocityX > Math.abs(velocityY)
+                        && Math.abs(velocityX) > getWidth() / 3){
+                    buttonView = LayoutInflater.from(context).inflate(R.layout.edit_button_layout, null);
+                    buttonView.setOnClickListener(new OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            selectItemGroup.removeView(buttonView);
+                            buttonView = null;
+                            isShowButton = false;
+                            if(delectListener != null){
+                                delectListener.delect(selectItem);
+                            }
+                        }
+                    });
+
                     selectItemGroup = (ViewGroup) getChildAt(selectItem-getFirstVisiblePosition());
                     RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
@@ -80,6 +102,33 @@ public class RouteShowDeleteView extends ListView implements View.OnTouchListene
                 }
                 return false;
             }
+
+//            @Override
+//            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+//                if(!isShowButton && Math.abs(velocityX) > Math.abs(velocityY)
+//                        && Math.abs(velocityX) >getWidth()/3 ){
+//                    buttonView = LayoutInflater.from(context).inflate(R.layout.button_layout,null);
+//                    buttonView.setOnClickListener(new OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            selectItemGroup.removeView(buttonView);
+//                            buttonView = null;
+//                            isShowButton = false;
+//                            if(delectListener != null){
+//                                delectListener.delect(selectItem);
+//                            }
+//                        }
+//                    });
+//                    //getChileAt获得的是屏幕上显示的Item序号
+//                    selectItemGroup = (ViewGroup) getChildAt(selectItem-getFirstVisiblePosition());
+//                    RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//                    params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+//                    params.addRule(RelativeLayout.CENTER_VERTICAL);
+//                    selectItemGroup.addView(buttonView,params);
+//                    isShowButton = true;
+//                }
+//                return false;
+//            }
         };
         detector = new GestureDetector(context,gestureListener);//设置手势监听
     }
