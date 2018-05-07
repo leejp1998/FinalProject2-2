@@ -134,6 +134,24 @@ public class MainActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        } else if (requestCode == 100 && resultCode == 1){
+            Bundle bundle = data.getExtras();
+            int year = bundle.getInt(yearKey);
+            int month = bundle.getInt(monthKey);
+            int day = bundle.getInt(daykey);
+            int hour = bundle.getInt(hourkey);
+            int minute = bundle.getInt(minuteKey);
+            String mydata = bundle.getString(dataKey);
+            boolean option = bundle.getBoolean(optionKey);
+            boolean assignment_option = bundle.getBoolean(assignmentKey);
+            System.out.println("--->my"+year+" "+month+" "+day+" "+hour+" "+minute+" "+mydata);
+            try {
+                saveRouteData(year,month,day,hour,minute,mydata,option, assignment_option);
+                scheduleView.mySelect(year,month,day);
+                System.out.println("--->++"+requestCode+" "+resultCode);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

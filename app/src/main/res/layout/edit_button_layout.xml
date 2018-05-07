@@ -4,5 +4,6 @@
     android:layout_height="wrap_content"
     android:text="Edit"
     android:textSize="20sp"
-    android:background="#77f1ab">
+    android:background="#77f1ab"
+    android:onClick="EditClicked">
 </Button>

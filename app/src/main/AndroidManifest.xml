@@ -20,6 +20,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="todo.activity.EditToDoActivity"></activity>
+
         <activity android:name="todo.activity.SeeAllScheduleActivity"></activity>
         <activity
             android:name="todo.activity.AddToDoActivity"
